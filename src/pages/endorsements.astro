@@ -24,11 +24,11 @@ const otherEndorsers = endorsements.signers.filter(person => !featured.some(sign
   <section aria-label="Additional endorsers">
     <ul class="endorsement-names">{otherEndorsers.map(person => <li><strong>{person.name}</strong><span>{person.title}</span></li>)}</ul>
   </section>
-  <p class="endorsement-identification">Titles are for identification only, not endorsements by the signers’ institutions.</p>
   <h2>Endorse the campaign</h2>
   <p>Sign up to endorse the campaign or help get the word out.</p>
   <a class="button" href="/get-involved/">Endorse No on EE<Arrow /></a>
   <p class="ballot-argument-link"><a href={`${endorsements.sourceUrl}#page=31`}>Read the argument against ↗</a></p>
+  <p class="endorsement-identification">Titles for identification purposes only</p>
 </Article>
 <style>
   .endorsement-headshots { list-style: none; padding: 0; margin: 0 0 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }

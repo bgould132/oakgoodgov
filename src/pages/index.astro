@@ -5,6 +5,7 @@ import Arrow from '../components/Arrow.astro';
 import cityHall from '../assets/oakland-city-hall.jpg';
 import cityHallSection from '../assets/city-hall-portrait.jpg';
 import shengThao from '../assets/shengthao.jpg';
+import councilMeeting from '../assets/city_council_meeting.jpeg';
 import content from '../content/site.json';
 ---
 <Base>
@@ -19,7 +20,7 @@ import content from '../content/site.json';
     </div>
   </section>
 
-  <nav class="issue-jumps" aria-label="Explore the issues"><div class="wrap"><span>Explore the issues</span>{content.issues.map(issue => <a href={`#${issue.id}`}>{issue.label}<span aria-hidden="true">↓</span></a>)}<a href="/issues/cost/">What it costs<span aria-hidden="true">↗</span></a></div></nav>
+  <nav class="issue-jumps" aria-label="Explore the issues"><div class="wrap"><span>Explore the issues</span>{content.issues.map(issue => <a href={`#${issue.id}`}>{issue.label}<span aria-hidden="true">↓</span></a>)}</div></nav>
 
   <section class="introduction wrap" id="issues" aria-labelledby="intro-title">
     <p class="eyebrow">{content.introduction.eyebrow}</p>
@@ -27,12 +28,12 @@ import content from '../content/site.json';
     <p class="intro-text">{content.introduction.text}</p>
   </section>
 
-  {content.issues.map(issue => <Fragment>
-    {issue.id === 'alternative' && <section class="further-reading wrap" aria-labelledby="further-title"><div><p class="eyebrow">Read more about the proposal</p><h2 id="further-title">The measure and its costs</h2></div><div class="further-links"><a href="/issues/cost/"><span>What would Measure EE cost?</span><Arrow diagonal /></a><a href="/measure/"><span>What else does the measure change?</span><Arrow diagonal /></a><a href="/sources/"><span>Read the original documents</span><Arrow diagonal /></a></div></section>}
-    <section id={issue.id} class={`issue issue-${issue.id}`} aria-labelledby={`${issue.id}-title`}>
+  {content.issues.map((issue, index) => <Fragment>
+    <section id={issue.id} class={`issue issue-${issue.id}${index % 2 === 1 ? ' issue-dark' : ''}`} aria-labelledby={`${issue.id}-title`}>
     <div class="wrap issue-grid">
-      <div class="issue-heading"><p class="issue-number" aria-hidden="true">0{issue.number}</p><p class="eyebrow">{issue.label}</p><h2 id={`${issue.id}-title`} class="section-title preserve-lines">{issue.title.split(/(<i>.*?<\/i>)/g).map(part => part.startsWith('<i>') ? <em>{part.slice(3, -4)}</em> : part)}</h2>
+      <div class="issue-heading"><p class="issue-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</p><p class="eyebrow">{issue.label}</p><h2 id={`${issue.id}-title`} class="section-title preserve-lines">{issue.title.split(/(<i>.*?<\/i>)/g).map(part => part.startsWith('<i>') ? <em>{part.slice(3, -4)}</em> : part)}</h2>
         {issue.id === 'power' && <Image src={shengThao} alt="Sheng Thao speaking at a microphone." widths={[400, 800]} sizes="(max-width: 640px) 90vw, 40vw" class="issue-photo issue-photo-monochrome" loading="lazy" />}
+        {issue.id === 'representation' && <Image src={councilMeeting} alt="Oakland City Council chamber with officials at the dais and residents in the public seating." widths={[400, 800]} sizes="(max-width: 640px) 90vw, 40vw" class="issue-photo" loading="lazy" />}
         {issue.id === 'accountability' && <figure class="city-hall-figure"><Image src={cityHallSection} alt="Oakland City Hall’s tower photographed from the plaza." widths={[400, 800]} sizes="(max-width: 640px) 90vw, 40vw" class="issue-photo city-hall-portrait" loading="lazy" /><figcaption>Daniel Ramirez · 2008 · <a href="https://commons.wikimedia.org/wiki/File:Oakland_City_Hall.jpg">Photo source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Resized and converted to WebP. No photographer endorsement implied.</figcaption></figure>}
         {issue.id === 'accountability' && <div class="argument-emblem"><span>The measure allows attendance</span><strong>“in person<br />or by designee”</strong><a href="/documents/measure-ee-adopted-text.pdf#page=14">Proposed Charter § 305(c) ↗</a></div>}
       </div>

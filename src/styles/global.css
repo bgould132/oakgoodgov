@@ -89,9 +89,9 @@ a,button,summary { -webkit-tap-highlight-color: transparent; touch-action: manip
 .argument-emblem > span { display: block; font-size: 13px; font-weight: 650; }
 .argument-emblem strong { display: block; font: 700 29px/1.1 var(--display); margin-top: 7px; }
 .argument-emblem a { display: block; margin-top: 12px; font-size: 12px; }
-.issue-accountability,.issue-alternative { background: var(--green); color: white; }
-.issue-accountability .issue-number,.issue-alternative .issue-number { color: var(--gold); }
-.issue-accountability .source-line,.issue-alternative .source-line { color: #d6e7dc; }
+.issue-dark { background: var(--green); color: white; }
+.issue-dark .issue-number { color: var(--gold); }
+.issue-dark .source-line { color: #d6e7dc; }
 .issue-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; margin-top: 28px; }
 .issue-photo-monochrome { filter: grayscale(100%); }
 .city-hall-figure { margin: 0; }
@@ -320,5 +320,5 @@ a,button,summary { -webkit-tap-highlight-color: transparent; touch-action: manip
   .site-header,.site-footer,.article-aside,.article-end,.skip-link,.issue-jumps { display: none; }
   .wrap { width: 100%; }
   .article-grid { display: block; }
-  .hero,.closing,.issue-accountability { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .hero,.closing,.issue-dark { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 }

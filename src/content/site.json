@@ -57,8 +57,20 @@
       "sourceHref": "/sources/#measure"
     },
     {
-      "id": "alternative",
+      "id": "cost",
       "number": "4",
+      "label": "Costs & compensation",
+      "title": "What would Measure EE cost?",
+      "text": "The City Auditor estimates $2.0–$2.6 million in first-year costs, increasing each year with inflation: approximately $1.7–$1.8 million for an Independent Budget and Legislative Analyst Office, plus $288,000–$867,000 in pay raises and benefits for Councilmembers.",
+      "position": "Councilmember pay could be raised to as much as $223,000 apiece - while their responsibilities are reduced at the same time. These costs would increase each year with inflation.",
+      "linkText": "More on costs & compensation",
+      "href": "/issues/cost/",
+      "source": "Read the Auditor’s July 8, 2026 analysis",
+      "sourceHref": "/documents/auditor-financial-analysis.pdf"
+    },
+    {
+      "id": "alternative",
+      "number": "5",
       "label": "The alternative",
       "title": "How <i>should</i> Oakland's charter be fixed?",
       "text": "There's a better way to fix Oakland's charter: we can adopt the Model City Charter, developed by the National Civic League and used by thousands of cities across the country. Under this model, the mayor would serve as Council President, and the Council and Mayor together would hire and oversee an experienced City Manager - a skilled professional who has the expertise to manage a $2 billion budget and 4,600 employees.",
