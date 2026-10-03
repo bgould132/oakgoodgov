@@ -87,14 +87,15 @@ test('signup uses a separate HTTPS form or an honest inactive state', () => {
   assert.doesNotMatch(html, /<form\b|<input\b/);
 });
 
-test('endorsements come from nine named ballot signers, not organizations', () => {
+test('endorsements include ballot signers and added endorsers', () => {
   const people = JSON.parse(readFileSync(resolve(root, 'src/content/endorsements.json'), 'utf8'));
-  assert.equal(people.signers.length, 9);
+  assert.equal(people.signers.length, 10);
+  assert.equal(people.signers.filter(person => person.page !== undefined).length, 9);
   const html = readFileSync(join(dist, 'endorsements/index.html'), 'utf8');
   for (const person of people.signers) {
     assert.ok(html.includes(person.name));
-    assert.ok([30,31].includes(person.page));
+    if (person.page !== undefined) assert.ok([30,31].includes(person.page));
   }
-  assert.match(html, /Titles are for identification only, not endorsements/);
-  assert.equal((html.match(/class="endorser-photo"/g) || []).length, 5);
+  assert.match(html, /Titles for identification purposes only/);
+  assert.equal((html.match(/class="endorser-photo"/g) || []).length, 6);
 });
