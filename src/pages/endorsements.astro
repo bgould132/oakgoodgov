@@ -8,12 +8,14 @@ import nate from '../assets/nate_miley.jpeg';
 import nancy from '../assets/nancy_nadel.jpeg';
 import james from '../assets/james_vann.jpg';
 import ben from '../assets/Ben Gould.jpeg';
+import sam from '../assets/sam_davis.jpg';
 const featured = [
   { name: 'Loren Taylor', photo: loren },
   { name: 'Nate Miley', photo: nate },
   { name: 'Nancy Nadel', photo: nancy },
   { name: 'James Vann', photo: james },
   { name: 'Ben Gould', photo: ben },
+  { name: 'Sam Davis', photo: sam },
 ].map(person => ({ ...endorsements.signers.find(signer => signer.name === person.name)!, photo: person.photo }));
 const otherEndorsers = endorsements.signers.filter(person => !featured.some(signer => signer.name === person.name));
 ---
