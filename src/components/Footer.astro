@@ -1,0 +1,15 @@
+---
+import Brand from './Brand.astro';
+import content from '../content/site.json';
+---
+<footer class="site-footer">
+  <div class="wrap footer-top">
+    <div><Brand /><p>Oakland residents opposing Measure EE.</p></div>
+    <nav aria-label="Footer navigation"><a href="/endorsements/">Who’s voting no</a><a href="/get-involved/">Get involved</a><a href="/issues/cost/">Costs & compensation</a><a href="/sources/">Facts & sources</a><a href="/about/">About us</a><a href="/privacy/">Privacy Policy</a><a href="/terms/">SMS Terms</a><a href={`mailto:${content.contactEmail}`}>{content.contactEmail}</a></nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>Oakland, California <span aria-hidden="true">↗</span></p>
+    <p>{content.paidForBy || 'Independent advocacy by Oakland residents. This is not a City of Oakland website.'}</p>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>

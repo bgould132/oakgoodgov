@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Arrow from '../components/Arrow.astro';
+import cityHall from '../assets/oakland-city-hall.jpg';
+import cityHallSection from '../assets/city-hall-portrait.jpg';
+import shengThao from '../assets/shengthao.jpg';
+import content from '../content/site.json';
+---
+<Base>
+  <section class="hero" aria-labelledby="hero-title">
+    <Image src={cityHall} alt="Oakland City Hall and the downtown skyline, looking toward the Bay." widths={[640, 960, 1440, 1920, 2560]} sizes="100vw" format="webp" quality={85} loading="eager" fetchpriority="high" class="hero-photo" />
+    <div class="hero-shade"></div>
+    <div class="hero-content wrap">
+      <p class="hero-eyebrow">{content.hero.caption}</p>
+      <h1 id="hero-title"><span class="hero-positive">{content.hero.firstLine}</span><span class="hero-negative">{content.hero.secondLine}</span></h1>
+      <p class="hero-description">{content.hero.description}</p>
+      <a class="button button-gold" href="#issues">{content.hero.button}<Arrow /></a>
+    </div>
+  </section>
+
+  <nav class="issue-jumps" aria-label="Explore the issues"><div class="wrap"><span>Explore the issues</span>{content.issues.map(issue => <a href={`#${issue.id}`}>{issue.label}<span aria-hidden="true">↓</span></a>)}<a href="/issues/cost/">What it costs<span aria-hidden="true">↗</span></a></div></nav>
+
+  <section class="introduction wrap" id="issues" aria-labelledby="intro-title">
+    <p class="eyebrow">{content.introduction.eyebrow}</p>
+    <h2 id="intro-title" class="section-title preserve-lines">{content.introduction.title}</h2>
+    <p class="intro-text">{content.introduction.text}</p>
+  </section>
+
+  {content.issues.map(issue => <Fragment>
+    {issue.id === 'alternative' && <section class="further-reading wrap" aria-labelledby="further-title"><div><p class="eyebrow">Read more about the proposal</p><h2 id="further-title">The measure and its costs</h2></div><div class="further-links"><a href="/issues/cost/"><span>What would Measure EE cost?</span><Arrow diagonal /></a><a href="/measure/"><span>What else does the measure change?</span><Arrow diagonal /></a><a href="/sources/"><span>Read the original documents</span><Arrow diagonal /></a></div></section>}
+    <section id={issue.id} class={`issue issue-${issue.id}`} aria-labelledby={`${issue.id}-title`}>
+    <div class="wrap issue-grid">
+      <div class="issue-heading"><p class="issue-number" aria-hidden="true">0{issue.number}</p><p class="eyebrow">{issue.label}</p><h2 id={`${issue.id}-title`} class="section-title preserve-lines">{issue.title.split(/(<i>.*?<\/i>)/g).map(part => part.startsWith('<i>') ? <em>{part.slice(3, -4)}</em> : part)}</h2>
+        {issue.id === 'power' && <Image src={shengThao} alt="Sheng Thao speaking at a microphone." widths={[400, 800]} sizes="(max-width: 640px) 90vw, 40vw" class="issue-photo issue-photo-monochrome" loading="lazy" />}
+        {issue.id === 'accountability' && <figure class="city-hall-figure"><Image src={cityHallSection} alt="Oakland City Hall’s tower photographed from the plaza." widths={[400, 800]} sizes="(max-width: 640px) 90vw, 40vw" class="issue-photo city-hall-portrait" loading="lazy" /><figcaption>Daniel Ramirez · 2008 · <a href="https://commons.wikimedia.org/wiki/File:Oakland_City_Hall.jpg">Photo source</a> · <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>. Resized and converted to WebP. No photographer endorsement implied.</figcaption></figure>}
+        {issue.id === 'accountability' && <div class="argument-emblem"><span>The measure allows attendance</span><strong>“in person<br />or by designee”</strong><a href="/documents/measure-ee-adopted-text.pdf#page=14">Proposed Charter § 305(c) ↗</a></div>}
+      </div>
+      <div class="issue-copy"><p>{issue.text}</p><p>{issue.position}</p><a class="text-link" href={issue.href}>{issue.linkText}<Arrow /></a><a class="source-line" href={issue.sourceHref}>{issue.source} ↗</a></div>
+    </div>
+  </section></Fragment>)}
+
+  <section class="neighbors" aria-labelledby="neighbors-title"><div class="wrap neighbors-grid"><div><p class="eyebrow">Ballot argument signers</p><h2 id="neighbors-title">Who is opposing Measure EE?</h2><p>Residents and community leaders have signed the ballot arguments against the measure. You can read the arguments and see who signed them here.</p></div><div class="neighbors-actions"><a class="button" href="/endorsements/">See the endorsements<Arrow /></a><a class="text-link" href="/get-involved/">Add your name<Arrow /></a></div></div></section>
+
+  <section class="closing" aria-labelledby="closing-title"><div class="wrap closing-grid"><div><p class="eyebrow">{content.closing.eyebrow}</p><h2 class="preserve-lines" id="closing-title">{content.closing.title}</h2><p>{content.closing.text}</p><div class="closing-actions"><a class="button button-gold" href="/get-involved/">{content.closing.primaryLabel}<Arrow /></a><a class="button button-outline" href={content.donationUrl || '/donate/'}>{content.closing.secondaryLabel}<Arrow diagonal /></a></div></div><div class="vote-stamp" aria-hidden="true"><strong>NO<span>on</span>EE</strong><span>Yes to good government</span></div></div></section>
+</Base>

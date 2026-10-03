@@ -1,0 +1,13 @@
+---
+import Article from '../layouts/Article.astro';
+import Arrow from '../components/Arrow.astro';
+import endorsements from '../content/endorsements.json';
+---
+<Article frontmatter={{ title: 'Who signed the arguments against Measure EE?', eyebrow: 'Endorsements', description: 'Meet the Oakland residents and community leaders who signed the ballot arguments opposing Measure EE.', lead: 'These Oakland residents and community leaders signed the official ballot arguments opposing Measure EE.' }}>
+  <h2>Ballot argument signers</h2>
+  <p>These individuals signed the official argument against Measure EE or the rebuttal to the argument in favor. Titles are provided to identify the signers, not as endorsements by their institutions.</p>
+  <ul class="endorsement-list">{endorsements.signers.map(person => <li><h3>{person.name}</h3><p>{person.title}</p><a href={`${endorsements.sourceUrl}#page=${person.page}`}>{person.page === 31 ? 'Argument against' : 'Opposition rebuttal'} ↗</a></li>)}</ul>
+  <h2>Endorse the campaign</h2>
+  <p>Sign up to endorse the campaign or help get the word out.</p>
+  <a class="button" href="/get-involved/">Endorse No on EE<Arrow /></a>
+</Article>

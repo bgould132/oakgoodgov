@@ -1,0 +1,9 @@
+---
+import Base from './Base.astro';
+const { title, description } = Astro.props.frontmatter;
+---
+<Base title={title} description={description}>
+  <div class="article-heading wrap"><a class="back-link" href="/">← Back to the homepage</a><h1>{title}</h1></div>
+  <article class="prose wrap policy-content"><slot /></article>
+</Base>
+<style>.policy-content { max-width: 850px; padding-bottom: 70px; }</style>

@@ -1,0 +1,9 @@
+---
+import Article from '../layouts/Article.astro';
+import Arrow from '../components/Arrow.astro';
+import content from '../content/site.json';
+---
+<Article frontmatter={{ title: 'Contributing to No on EE', eyebrow: 'Donate', description: 'Donation information for Oakland Residents for Good Government.', lead: 'You can express interest in contributing to the campaign. We’ll add a verified donation link here before accepting contributions.' }}>
+  {content.donationUrl ? <div class="donation-status"><h2>Contribute through our donation page</h2><p>Contributions are handled by the linked donation service. The donation page identifies the recipient and explains eligibility rules and campaign disclosures.</p><a class="button" href={content.donationUrl}>Continue to donations<Arrow diagonal /></a></div> : <div class="donation-status"><h2>Donations are not open yet.</h2><p>We’re still preparing the donation page and campaign disclosures. This website does not collect payment information or accept contributions.</p></div>}
+  <h2>Express interest in contributing</h2><p><a href="/get-involved/">Sign up to express interest in donating</a>, volunteer, endorse, or request a yard sign. Expressing interest is not a financial commitment.</p>
+</Article>

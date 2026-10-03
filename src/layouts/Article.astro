@@ -1,0 +1,29 @@
+---
+import Base from './Base.astro';
+import Arrow from '../components/Arrow.astro';
+import content from '../content/site.json';
+interface Props { frontmatter: { title: string; description: string; eyebrow?: string; lead?: string; }; }
+const { title, description, eyebrow = 'The details matter', lead } = Astro.props.frontmatter;
+---
+<Base title={title} description={description}>
+  <div class="article-heading wrap">
+    <a class="back-link" href="/">← Back to the homepage</a>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lead && <p class="article-lead">{lead}</p>}
+  </div>
+  <div class="article-grid wrap">
+    <article class="prose"><slot /></article>
+    <aside class="article-aside" aria-label="Explore the arguments">
+      <p class="eyebrow">Keep exploring</p>
+      <nav aria-label="Issue navigation">
+        {content.issues.map(issue => <a href={issue.href} aria-current={Astro.url.pathname === issue.href ? 'page' : undefined}><span>{issue.number} / {issue.label}</span><Arrow /></a>)}
+        <a href="/issues/cost/" aria-current={Astro.url.pathname === '/issues/cost/' ? 'page' : undefined}><span>Costs & compensation</span><Arrow /></a>
+        <a href="/measure/"><span>What EE changes</span><Arrow /></a>
+        <a href="/sources/"><span>Read the sources</span><Arrow /></a>
+      </nav>
+      <div class="aside-note"><span class="serif">Our position</span><strong>Vote NO on EE</strong><p>We support charter reform and explain here why we oppose this proposal. The source documents are linked throughout.</p></div>
+    </aside>
+  </div>
+  <div class="article-end wrap"><span>Oakland Residents for Good Government</span><a class="text-link" href="/">Return to the homepage <Arrow /></a></div>
+</Base>

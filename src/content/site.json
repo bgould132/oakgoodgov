@@ -1,0 +1,79 @@
+{
+  "name": "Oakland Residents for Good Government",
+  "description": "Oakland Residents for Good Government explains why we oppose Measure EE and what it would change about appointments, public accountability, and Council representation.",
+  "draft": true,
+  "donationUrl": "",
+  "signupUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdEGL7gdLxmFlQrtzHlYOd_7TTeSRFH9CpIcBIwhOX9NpV3Kg/viewform?usp=publish-editor",
+  "contactEmail": "oakgoodgov@gmail.com",
+  "paidForBy": "Paid for by Oakland Residents for Good Government, FPPC ID # Pending. Funding details are available on the Oakland Public Ethics Commission's website",
+  "hero": {
+    "eyebrow": "Oakland Residents for Good Government",
+    "firstLine": "Say YES to Good Government",
+    "secondLine": "Vote NO on EE",
+    "description": "Measure EE gives the mayor too much power and makes it harder for Oaklanders to get answers from City Hall.",
+    "button": "Here’s why we’re voting no",
+    "caption": "Oakland Residents for Good Government"
+  },
+  "introduction": {
+    "eyebrow": "Why we oppose Measure EE",
+    "title": "Oakland needs charter reform.\nBut Measure EE is the wrong way to do it.",
+    "text": "There's no question Oakland's charter is broken. But Measure EE is the wrong way to fix it. It concentrates power in the mayor’s office while reducing checks on how that authority is used. It increases the risk of corruption, makes it harder to hold City Hall accountable, and moves Oakland in the wrong direction when it comes to listening to community concerns."
+  },
+  "issues": [
+    {
+      "id": "power",
+      "number": "1",
+      "label": "Corruption risks",
+      "title": "Who gets to run\nCity Hall?",
+      "text": "Former Mayor Sheng Thao is on trial for corruption in part because she tried to appoint an unqualified department director to give out contracts to her political friends and allies. Measure EE gives the mayor the power to appoint almost any department head without any review or Council confirmation, increasing the risk of corruption when we already know exactly how this power can be abused. These are among the highest paying roles in City Hall, with responsibility for essential services Oaklanders rely on. Giving a mayor broad authority to appoint and remove department heads creates more opportunities to reward friends and political allies, and to put political pressure on the people managing those services.",
+      "position": "People should be chosen for their experience and ability to do the work - not their political connections.",
+      "linkText": "More on appointments & corruption risks",
+      "href": "/issues/power/",
+      "source": "Read the proposed appointment rules",
+      "sourceHref": "/sources/#measure"
+    },
+    {
+      "id": "accountability",
+      "number": "2",
+      "label": "Transparency & accountability",
+      "title": "Who answers\nto the public?",
+      "text": "Today, Councilmembers can question the City Administrator at Council meetings about how the city is being run or the status of a project. That gives residents a public opportunity to hear from the city’s chief executive.",
+      "position": "Measure EE would make the mayor the chief executive, but not require the mayor to attend council meetings. The City Administrator would be relegated to overseeing just a handful of departments (Finance, HR, IT), leaving the City Council - and the public - without answers to pressing questions about what's going on behind closed doors. The public deserves to be able to hear from their highest elected official and hold them to account.",
+      "linkText": "More on transparency & accountability",
+      "href": "/issues/accountability/",
+      "source": "Read the proposed attendance rules",
+      "sourceHref": "/sources/#measure"
+    },
+    {
+      "id": "representation",
+      "number": "3",
+      "label": "Neighborhood representation",
+      "title": "Who does the\nMayor answer to?",
+      "text": "We already know citywide representation is wrong for Oakland. Nearly 50 years ago, we moved to district-based elections for City Council, in order to ensure each neighborhood had fair representation in City Hall. Those neighborhood disparities persist today. A mayor could be elected with the support of just three of our seven council districts, but Measure EE would give them all the power to decide who gets city services, where community resources go, and what the city's priorities are.",
+      "position": "With powerful veto authority, the mayor and just three city councilmembers could block critical citywide legislation and policy priorities badly needed by the broader community. It's all the dysfunction of Congress and the federal government, brought to Oakland.",
+      "linkText": "More on neighborhood representation",
+      "href": "/issues/representation/",
+      "source": "Read the proposed Council & veto rules",
+      "sourceHref": "/sources/#measure"
+    },
+    {
+      "id": "alternative",
+      "number": "4",
+      "label": "The alternative",
+      "title": "How <i>should</i> Oakland's charter be fixed?",
+      "text": "There's a better way to fix Oakland's charter: we can adopt the Model City Charter, developed by the National Civic League and used by thousands of cities across the country. Under this model, the mayor would serve as Council President, and the Council and Mayor together would hire and oversee an experienced City Manager - a skilled professional who has the expertise to manage a $2 billion budget and 4,600 employees.",
+      "position": "Cities of all sizes - from Berkeley to San Jose - use the Model City Charter as a template for their form of government. Over 400 cities in California follow this model - just 4 use a system like Measure EE. Oakland can do the same.",
+      "linkText": "More on the Model City Charter",
+      "href": "/model-city-charter/",
+      "source": "Read the Model City Charter",
+      "sourceHref": "/sources/#mcc"
+    }
+  ],
+  "closing": {
+    "eyebrow": "Help us make the case",
+    "title": "Vote NO on EE",
+    "text": "We believe Oakland can improve its charter while keeping meaningful checks on executive power. If you agree, you can endorse the campaign, volunteer, or request a yard sign through our signup form.",
+    "primaryLabel": "Get involved",
+    "secondaryLabel": "Donate"
+  }
+}
