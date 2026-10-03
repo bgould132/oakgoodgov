@@ -13,9 +13,9 @@ const featured = [
   { name: 'Loren Taylor', photo: loren },
   { name: 'Nate Miley', photo: nate },
   { name: 'Nancy Nadel', photo: nancy },
-  { name: 'James Vann', photo: james },
-  { name: 'Ben Gould', photo: ben },
   { name: 'Sam Davis', photo: sam },
+  { name: 'Ben Gould', photo: ben },
+  { name: 'James Vann', photo: james },
 ].map(person => ({ ...endorsements.signers.find(signer => signer.name === person.name)!, photo: person.photo }));
 const otherEndorsers = endorsements.signers.filter(person => !featured.some(signer => signer.name === person.name));
 ---
