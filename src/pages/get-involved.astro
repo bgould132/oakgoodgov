@@ -8,7 +8,8 @@ embedUrl?.searchParams.set('embedded', 'true');
   {embedUrl ? <><iframe class="signup-embed" src={embedUrl.toString()} title="Oakland Residents for Good Government signup form" loading="eager">Loading signup form…</iframe><p class="form-fallback"><a href={content.signupUrl}>Open the form directly</a> if it doesn’t appear here.</p></> : <p>Signup form coming shortly.</p>}
 </Article>
 <style>
-  .signup-embed { display: block; width: 100%; height: 1900px; border: 0; }
+  .signup-embed { display: block; width: 100%; height: 2100px; border: 0; }
   .form-fallback { font-size: 14px; }
-  @media (max-width: 640px) { .signup-embed { height: 2200px; } }
+  @media (max-width: 1000px) { .signup-embed { height: 2500px; } }
+  @media (max-width: 480px) { .signup-embed { height: 2800px; } }
 </style>

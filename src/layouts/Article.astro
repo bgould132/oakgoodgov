@@ -18,7 +18,6 @@ const { title, description, eyebrow = 'The details matter', lead } = Astro.props
       <p class="eyebrow">Keep exploring</p>
       <nav aria-label="Issue navigation">
         {content.issues.map(issue => <a href={issue.href} aria-current={Astro.url.pathname === issue.href ? 'page' : undefined}><span>{issue.number} / {issue.label}</span><Arrow /></a>)}
-        <a href="/issues/cost/" aria-current={Astro.url.pathname === '/issues/cost/' ? 'page' : undefined}><span>Costs & compensation</span><Arrow /></a>
         <a href="/measure/"><span>What EE changes</span><Arrow /></a>
         <a href="/sources/"><span>Read the sources</span><Arrow /></a>
       </nav>
