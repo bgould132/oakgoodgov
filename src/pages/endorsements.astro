@@ -2,12 +2,45 @@
 import Article from '../layouts/Article.astro';
 import Arrow from '../components/Arrow.astro';
 import endorsements from '../content/endorsements.json';
+import { Image } from 'astro:assets';
+import loren from '../assets/Loren_Taylor_Oakland_City_Council.jpg';
+import nate from '../assets/nate_miley.jpeg';
+import nancy from '../assets/nancy_nadel.jpeg';
+import james from '../assets/james_vann.jpg';
+import ben from '../assets/Ben Gould.jpeg';
+const featured = [
+  { name: 'Loren Taylor', photo: loren },
+  { name: 'Nate Miley', photo: nate },
+  { name: 'Nancy Nadel', photo: nancy },
+  { name: 'James Vann', photo: james },
+  { name: 'Ben Gould', photo: ben },
+].map(person => ({ ...endorsements.signers.find(signer => signer.name === person.name)!, photo: person.photo }));
+const otherEndorsers = endorsements.signers.filter(person => !featured.some(signer => signer.name === person.name));
 ---
-<Article frontmatter={{ title: 'Who signed the arguments against Measure EE?', eyebrow: 'Endorsements', description: 'Meet the Oakland residents and community leaders who signed the ballot arguments opposing Measure EE.', lead: 'These Oakland residents and community leaders signed the official ballot arguments opposing Measure EE.' }}>
-  <h2>Ballot argument signers</h2>
-  <p>These individuals signed the official argument against Measure EE or the rebuttal to the argument in favor. Titles are provided to identify the signers, not as endorsements by their institutions.</p>
-  <ul class="endorsement-list">{endorsements.signers.map(person => <li><h3>{person.name}</h3><p>{person.title}</p><a href={`${endorsements.sourceUrl}#page=${person.page}`}>{person.page === 31 ? 'Argument against' : 'Opposition rebuttal'} ↗</a></li>)}</ul>
+<Article frontmatter={{ title: "We're voting No on EE", eyebrow: 'Endorsements', description: 'Endorsements of No on Measure EE.' }}>
+  <section aria-label="Endorsers with headshots">
+    <ul class="endorsement-headshots">{featured.map(person => <li><Image src={person.photo} alt={person.name} widths={[240, 480]} sizes="(max-width: 640px) 80vw, 25vw" class="endorser-photo" style={person.name === 'Ben Gould' ? 'object-position: 12% 25%;' : undefined} loading="lazy" /><h2>{person.name}</h2><p>{person.title}</p></li>)}</ul>
+  </section>
+  <section aria-label="Additional endorsers">
+    <ul class="endorsement-names">{otherEndorsers.map(person => <li><strong>{person.name}</strong><span>{person.title}</span></li>)}</ul>
+  </section>
+  <p class="endorsement-identification">Titles are for identification only, not endorsements by the signers’ institutions.</p>
   <h2>Endorse the campaign</h2>
   <p>Sign up to endorse the campaign or help get the word out.</p>
   <a class="button" href="/get-involved/">Endorse No on EE<Arrow /></a>
+  <p class="ballot-argument-link"><a href={`${endorsements.sourceUrl}#page=31`}>Read the argument against ↗</a></p>
 </Article>
+<style>
+  .endorsement-headshots { list-style: none; padding: 0; margin: 0 0 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  .endorsement-headshots li { margin: 0; }
+  .endorser-photo { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; object-position: center 25%; display: block; }
+  .endorsement-headshots h2 { margin: 14px 0 6px; font-size: 30px; }
+  .endorsement-headshots p { font-size: 15px; line-height: 1.5; margin: 0; }
+  .endorsement-names { list-style: none; padding: 0; border-top: 2px solid var(--green); }
+  .endorsement-names li { margin: 0; padding: 17px 0; border-bottom: 1px solid var(--green); display: flex; flex-wrap: wrap; gap: 5px 18px; align-items: baseline; }
+  .endorsement-names strong { font-size: 21px; }
+  .endorsement-names span { font-size: 16px; }
+  .endorsement-identification { font-size: 13px; }
+  .ballot-argument-link { margin-top: 36px; }
+  @media (max-width: 480px) { .endorsement-headshots { grid-template-columns: 1fr; } }
+</style>

@@ -95,5 +95,6 @@ test('endorsements come from nine named ballot signers, not organizations', () =
     assert.ok(html.includes(person.name));
     assert.ok([30,31].includes(person.page));
   }
-  assert.match(html, /not as endorsements by their institutions/);
+  assert.match(html, /Titles are for identification only, not endorsements/);
+  assert.equal((html.match(/class="endorser-photo"/g) || []).length, 5);
 });
