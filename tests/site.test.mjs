@@ -14,8 +14,8 @@ const walk = directory => readdirSync(directory).flatMap(name => {
 assert.ok(existsSync(dist), 'Run npm run build before npm test');
 const pages = walk(dist).filter(path => path.endsWith('.html'));
 
-test('build includes all fifteen expected pages', () => {
-  assert.equal(pages.length, 15);
+test('build includes English and three translated versions', () => {
+  assert.equal(pages.length, 60);
   for (const path of ['index.html', 'about/index.html', 'donate/index.html', 'endorsements/index.html', 'get-involved/index.html', 'measure/index.html', 'sources/index.html', 'issues/power/index.html', 'issues/representation/index.html', 'issues/accountability/index.html', 'issues/cost/index.html', 'model-city-charter/index.html', 'privacy/index.html', 'terms/index.html', '404.html']) {
     assert.ok(existsSync(resolve(dist, path)), path);
   }
@@ -26,7 +26,8 @@ for (const page of pages) {
   const html = readFileSync(page, 'utf8');
   test(`${name}: landmarks, metadata, and draft protection`, () => {
     assert.equal((html.match(/<h1\b/g) || []).length, 1, 'one main heading');
-    assert.match(html, /<html lang="en">/);
+    const locale = name.match(/^(es|zh-Hans|zh-Hant)\//)?.[1] || 'en';
+    assert.ok(html.includes(`<html lang="${locale}">`));
     assert.match(html, /<main id="main"/);
     assert.match(html, /name="description" content="[^"]+"/);
     if (settings.draft) assert.match(html, /name="robots" content="noindex, nofollow"/);

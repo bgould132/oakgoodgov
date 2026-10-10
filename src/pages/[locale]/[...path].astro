@@ -1,0 +1,11 @@
+---
+const pages = import.meta.glob(['../*.{astro,md}','../issues/*.md'], {eager:true});
+export function getStaticPaths() {
+  const paths = ['','about','donate','endorsements','get-involved','issues/accountability','issues/cost','issues/power','issues/representation','measure','model-city-charter','privacy','sources','terms','404'];
+  return ['es','zh-Hans','zh-Hant'].flatMap(locale => paths.map(path => ({params:{locale,path:path || undefined}})));
+}
+const path = Astro.params.path || 'index';
+const module = pages[`../${path}.astro`] || pages[`../${path}.md`];
+const Page = (module as {default: any}).default;
+---
+<Page />

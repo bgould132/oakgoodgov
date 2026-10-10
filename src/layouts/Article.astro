@@ -2,6 +2,8 @@
 import Base from './Base.astro';
 import Arrow from '../components/Arrow.astro';
 import content from '../content/site.json';
+import {localePath} from '../i18n/locales';
+const pathname = localePath(Astro.url.pathname).path;
 interface Props { frontmatter: { title: string; description: string; eyebrow?: string; lead?: string; }; }
 const { title, description, eyebrow = 'The details matter', lead } = Astro.props.frontmatter;
 ---
@@ -17,7 +19,7 @@ const { title, description, eyebrow = 'The details matter', lead } = Astro.props
     <aside class="article-aside" aria-label="Explore the arguments">
       <p class="eyebrow">Keep exploring</p>
       <nav aria-label="Issue navigation">
-        {content.issues.map(issue => <a href={issue.href} aria-current={Astro.url.pathname === issue.href ? 'page' : undefined}><span>{issue.number} / {issue.label}</span><Arrow /></a>)}
+        {content.issues.map(issue => <a href={issue.href} aria-current={pathname === issue.href ? 'page' : undefined}><span>{issue.number} / {issue.label}</span><Arrow /></a>)}
         <a href="/measure/"><span>What EE changes</span><Arrow /></a>
         <a href="/sources/"><span>Read the sources</span><Arrow /></a>
       </nav>

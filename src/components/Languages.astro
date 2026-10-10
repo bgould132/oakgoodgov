@@ -1,0 +1,31 @@
+---
+import {locales, labels, localePath, localizedPath} from '../i18n/locales';
+const {locale, path} = localePath(Astro.url.pathname);
+const equivalent = ['/404/','/404.html'].includes(path) ? '/' : path;
+---
+<details class="language-dropdown">
+  <summary lang={locale} data-language-link>{labels[locale as keyof typeof labels]} <span aria-hidden="true">▾</span></summary>
+  <nav aria-label="Language">{locales.map(code => <a href={localizedPath(equivalent, code)} lang={code} hreflang={code} aria-current={locale === code ? 'page' : undefined} data-language-link>{labels[code]}</a>)}</nav>
+</details>
+<style>
+  .language-dropdown {position:relative; flex-shrink:0; font-size:.85rem;}
+  summary {display:flex; gap:.4rem; align-items:center; min-height:44px; padding:.4rem .5rem; cursor:pointer; font-weight:750; list-style:none; white-space:nowrap;}
+  summary::-webkit-details-marker {display:none;}
+  nav {position:absolute; right:0; top:calc(100% + .5rem); min-width:160px; padding:.4rem; background:var(--paper); border:2px solid var(--green); border-radius:3px; box-shadow:0 8px 20px #003d2926; z-index:30;}
+  nav a {display:block; padding:.65rem .8rem; text-decoration:none;}
+  nav a:hover {background:var(--gold);}
+  nav a[aria-current="page"] {font-weight:800; text-decoration:underline; text-decoration-thickness:2px;}
+  @media(max-width:480px) {summary {font-size:.75rem; padding-inline:.2rem;}}
+</style>
+<script>
+  const dropdown = document.querySelector<HTMLDetailsElement>('.language-dropdown');
+  document.addEventListener('click', event => {
+    if (dropdown?.open && event.target instanceof Node && !dropdown.contains(event.target)) dropdown.open = false;
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && dropdown?.open) {
+      dropdown.open = false;
+      dropdown.querySelector('summary')?.focus();
+    }
+  });
+</script>

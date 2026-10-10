@@ -1,8 +1,10 @@
 ---
 import Brand from './Brand.astro';
+import Languages from './Languages.astro';
 import Arrow from './Arrow.astro';
 import content from '../content/site.json';
-const pathname = Astro.url.pathname;
+import {localePath} from '../i18n/locales';
+const pathname = localePath(Astro.url.pathname).path;
 const links = [
   { label: 'Why No on EE', href: '/#issues', active: pathname.startsWith('/issues/') },
   { label: 'Endorsements', href: '/endorsements/', active: pathname === '/endorsements/' },
@@ -16,9 +18,10 @@ const links = [
       {links.map(link => <a href={link.href} aria-current={link.active ? 'page' : undefined}>{link.label}</a>)}
     </nav>
     <div class="nav-actions">
+      <Languages />
       <a class="nav-join" href="/get-involved/">Get involved</a>
       <a class="button button-small" href={content.donationUrl || '/donate/'}>Donate <Arrow diagonal /></a>
-      <button class="menu-button" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Open navigation"><span></span><span></span></button>
+      <button class="menu-button" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation"><span></span><span></span></button>
     </div>
   </div>
   <nav id="mobile-navigation" class="mobile-nav wrap" aria-label="Mobile navigation" hidden>
@@ -36,13 +39,13 @@ const links = [
     const close = () => {
       menu.hidden = true;
       button.setAttribute('aria-expanded', 'false');
-      button.setAttribute('aria-label', 'Open navigation');
+      button.setAttribute('aria-label', button.dataset.openLabel || 'Open navigation');
     };
     button.addEventListener('click', () => {
       const opening = menu.hidden;
       menu.hidden = !opening;
       button.setAttribute('aria-expanded', String(opening));
-      button.setAttribute('aria-label', opening ? 'Close navigation' : 'Open navigation');
+      button.setAttribute('aria-label', (opening ? button.dataset.closeLabel : button.dataset.openLabel) || 'Open navigation');
     });
     menu.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
     document.addEventListener('keydown', event => {
