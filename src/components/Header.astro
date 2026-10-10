@@ -18,8 +18,8 @@ const links = [
       {links.map(link => <a href={link.href} aria-current={link.active ? 'page' : undefined}>{link.label}</a>)}
     </nav>
     <div class="nav-actions">
-      <Languages />
       <a class="nav-join" href="/get-involved/">Get involved</a>
+      <Languages />
       <a class="button button-small" href={content.donationUrl || '/donate/'}>Donate <Arrow diagonal /></a>
       <button class="menu-button" type="button" aria-controls="mobile-navigation" aria-expanded="false" aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation"><span></span><span></span></button>
     </div>
